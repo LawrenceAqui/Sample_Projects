@@ -1,0 +1,63 @@
+---
+title: "Lesson 2: GGPlot"
+output: html_document
+---
+
+## Step 1: Import data 
+
+The data in this example is originally from the article Hotel Booking Demand Datasets (https://www.sciencedirect.com/science/article/pii/S2352340918315191), written by Nuno Antonio, Ana Almeida, and Luis Nunes for Data in Brief, Volume 22, February 2019.
+
+The data was downloaded and cleaned by Thomas Mock and Antoine Bichat for #TidyTuesday during the week of February 11th, 2020 (https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-02-11/readme.md).
+
+Learn more about the dataset here:
+https://www.kaggle.com/jessemostipak/hotel-booking-demand
+
+
+```{r load data}
+hotel_bookings <- read.csv("hotel_bookings.csv")
+```
+## Step 2: Look at a sample of data
+
+Using the head() function to preview data: 
+```{r examining your data}
+head(hotel_bookings)
+```
+
+Use colnames() to get the names of all the columns in the data set. 
+
+```{r look at column names}
+colnames(hotel_bookings)
+```
+
+## Step 3: Install and load the 'ggplot2' package
+
+
+Install and load `ggplot2`.
+
+```{r loading and installing ggplot2, echo=FALSE, message=FALSE}
+install.packages('ggplot2')
+library(ggplot2)
+```
+
+## Step 4: Begin creating a plot
+
+Use `ggplot2` to determine if people with children book hotel rooms in advance. Try running the code below:
+
+```{r creating a plot}
+ggplot(data = hotel_bookings) +
+  geom_point(mapping = aes(x = lead_time, y = children))
+```
+
+On the x-axis, the plot shows how far in advance a booking is made, with the bookings furthest to the right happening the most in advance. On the y-axis it shows how many children there are in a party.
+
+## Step 5: More Plot
+
+Mapping 'stays_in_weekend_nights' on the x-axis and 'children' on the y-axis by filling out the remainder of the code below:
+
+```{r}
+ggplot(data = hotel_bookings) +
+ geom_point(mapping = aes(x = stays_in_weekend_nights, y = children))
+```
+
+
+
